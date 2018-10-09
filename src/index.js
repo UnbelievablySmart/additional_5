@@ -1,18 +1,18 @@
 module.exports = function check(str, bracketsConfig) {
-  var stack = [], form = {}, type = {};
+  const stack = [], form = {}, type = {};
 
-  for (var i = 0; i < bracketsConfig.length; i++) {
-    var left = bracketsConfig[i][0];
-    var right = bracketsConfig[i][1];
+  for (let i = 0; i < bracketsConfig.length; i++) {
+    let left = bracketsConfig[i][0];
+    let right = bracketsConfig[i][1];
     form[left] = right;
     form[right] = left;
     type[left] = "opened";
     type[right] = "closed";
   }
 
-  for (var i = 0; i < str.length; i++) {
-    var top = stack.length <= 0 ? null : stack[stack.length - 1];
-    var current = str[i];
+  for (let i = 0; i < str.length; i++) {
+    let top = stack.length <= 0 ? null : stack[stack.length - 1];
+    let current = str[i];
 
     if (type[current] == "opened") {
       stack.push(current);
